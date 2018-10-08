@@ -43,7 +43,7 @@ Public Class _Default4
                     cn.Close()
                 End Try
             Else
-                Me.lblAppUrl.Text = "No Work Order Id Provided<br/>"
+                'Me.lblAppUrl.Text = "No Work Order Id Provided<br/>"
             End If
         End If
 
@@ -66,6 +66,8 @@ Public Class _Default4
                                       App.CurrentUser.Permissions = Enums.SystemUserPermissions.SystemAdministrator)
             Me.pnlActivity.Visible = Me.pnlBadges.Visible
 
+            Me.pnlWOLookup.Visible = False
+
         Else ' desktop
             Me.pnlRootOptions.Visible = (App.ActiveFolderID = 0 And App.CurrentUser.IsSysAdmin)
             Me.pnlFolderOptions.Visible = (App.ActiveFolderID > 0 And App.CurrentUser.IsSysAdmin)
@@ -80,6 +82,11 @@ Public Class _Default4
                                       App.CurrentUser.Permissions = Enums.SystemUserPermissions.SystemAdministrator)
             Me.pnlActivity.Visible = Me.pnlBadges.Visible
         End If
+
+        '' hide the badges for Weston
+        'If App.CurrentClient.ID = 13 Then
+        '    Me.pnlBadges.Visible = False
+        'End If
 
         Me.Master.MenuAjaxPanel.RaisePostBackEvent("")
 
@@ -292,5 +299,29 @@ Public Class _Default4
 
     Private Sub lnkCompletedWorkOrders_Click(sender As Object, e As EventArgs) Handles lnkCompletedWorkOrders.Click
         Response.Redirect("~/account/Search.aspx?modid=0&showcompleted=1")
+    End Sub
+
+    Private Sub btnWOLookup_Click(sender As Object, e As EventArgs) Handles btnWOLookup.Click
+        Dim cn As New SqlClient.SqlConnection(ConnectionString)
+
+        Try
+            Dim cmd As New SqlClient.SqlCommand("SELECT [ID], [xFolderID], [xModuleID], [SupervisorID], [TechnicianID], [xCustAcctNum] FROM [vwWorkOrderLookup] WHERE [ID] = " & Me.txtWOLookup.Text.Trim.ToInteger, cn)
+            If cmd.Connection.State = ConnectionState.Closed Then cmd.Connection.Open()
+            Dim rs As SqlClient.SqlDataReader = cmd.ExecuteReader
+            If rs.Read Then
+                App.ActiveFolderID = rs("xFolderID").ToString.ToInteger
+                App.ActiveModule = New SystemModule(rs("xModuleID").ToString.ToInteger)
+                App.Mobile_SupervisorID = rs("SupervisorID").ToString.ToInteger
+                App.Mobile_TechnicianID = rs("TechnicianID").ToString.ToInteger
+                Response.Redirect("~/account/Module.aspx?modid=" & rs("xModuleID").ToString & "&id=" & rs("ID").ToString & "&custacctnum=" & rs("xCustAcctNum").ToString & "&assignments=" & False, False)
+            End If
+            cmd.Cancel()
+            rs.Close()
+
+        Catch ex As Exception
+            ex.WriteToErrorLog(New ErrorLogEntry(App.CurrentUser.ID, App.CurrentClient.ID, Enums.ProjectName.Builder))
+        Finally
+            cn.Close()
+        End Try
     End Sub
 End Class

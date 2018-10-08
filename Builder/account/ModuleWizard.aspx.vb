@@ -143,7 +143,7 @@ Public Class ModuleWizard
 
             Me.ddlSupervisor.Items.Clear()
             Me.ddlSupervisor.Items.Add(New RadComboBoxItem("Unassigned", "0"))
-            Dim cmd As New SqlClient.SqlCommand("SELECT [ID], [xName] FROM [vwUserInfo] WHERE [xClientID] = " & App.CurrentClient.ID & " AND [xPermissions] = '" & Enums.SystemUserPermissions.Supervisor.ToString & "' ORDER BY [xName]", cn)
+            Dim cmd As New SqlClient.SqlCommand("SELECT [ID], [xName] FROM [vwUserInfo] WHERE [xClientID] = " & App.CurrentClient.ID & " AND ([xPermissions] = '" & Enums.SystemUserPermissions.Supervisor.ToString & "' OR [xPermissions] = '" & Enums.SystemUserPermissions.Administrator.ToString & "' OR [xPermissions] = '" & Enums.SystemUserPermissions.SystemAdministrator.ToString & "' OR [xPermissions] = '" & Enums.SystemUserPermissions.Solvtopia.ToString & "') ORDER BY [xName]", cn)
             If cmd.Connection.State = ConnectionState.Closed Then cmd.Connection.Open()
             Dim rs As SqlClient.SqlDataReader = cmd.ExecuteReader
             Do While rs.Read
@@ -242,6 +242,11 @@ Public Class ModuleWizard
                 cmd = New SqlClient.SqlCommand("EXEC [procRefreshQuestionIDs];", cn)
                 If cmd.Connection.State = ConnectionState.Closed Then cmd.Connection.Open()
                 cmd.ExecuteNonQuery()
+
+                If Not App.ModuleNames.ContainsKey("_" & Me.currentModule.ID) Then
+                    App.ModuleNames.Add("_" & Me.currentModule.ID, Me.currentModule.Name)
+                Else app.ModuleNames("_" & Me.currentModule.ID) = Me.currentModule.Name
+                End If
 
                 If Me.Type = Enums.SystemModuleType.Folder Then
                     CommonCore.Shared.Common.LogHistory(Me.txtName.Text & " Folder Updated", App.CurrentUser.ID)

@@ -34,6 +34,17 @@ Public Class App
         End Set
     End Property
 
+    Public Shared Property ModuleNames As Hashtable
+        Get
+            Dim retVal As New Hashtable
+            If HttpContext.Current.Session IsNot Nothing AndAlso HttpContext.Current.Session("ModuleNames") IsNot Nothing Then retVal = CType(HttpContext.Current.Session("ModuleNames"), Hashtable)
+            Return retVal
+        End Get
+        Set(value As Hashtable)
+            HttpContext.Current.Session("ModuleNames") = value
+        End Set
+    End Property
+
     Public Shared Property ActiveModule As SystemModule
         Get
             Dim retVal As New SystemModule

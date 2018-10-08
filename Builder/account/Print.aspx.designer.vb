@@ -32,6 +32,33 @@ Partial Public Class Print
     Protected WithEvents RadScriptManager1 As Global.Telerik.Web.UI.RadScriptManager
     
     '''<summary>
+    '''lblDateCreated control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblDateCreated As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblDateUpdated control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblDateUpdated As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblCurrentDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCurrentDate As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''tblFolderQuestions control.
     '''</summary>
     '''<remarks>

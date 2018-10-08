@@ -33,6 +33,30 @@
                 <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js"></asp:ScriptReference>
             </Scripts>
         </telerik:RadScriptManager>
+        <table class="wrap-table-module">
+            <tr>
+                <td>Date Created:</td>
+                <td>
+                    Last Updated:</td>
+                <td>
+                    Date Printed:</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" ID="lblDateCreated" /></td>
+                <td>
+                    <asp:Label runat="server" ID="lblDateUpdated" /></td>
+                <td>
+                    <asp:Label runat="server" ID="lblCurrentDate" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
         <asp:Table ID="tblFolderQuestions" runat="server" CellPadding="1" CellSpacing="2" Width="100%" />
         <asp:Table ID="tblModuleQuestions" runat="server" CellPadding="1" CellSpacing="2" Width="100%" />
         <table class="wrap-table-module">
@@ -141,7 +165,9 @@
             </LayersCollection>
         </telerik:RadMap>
         <table class="wrap-table-module">
-            <tr><td>Ticket Text</td></tr>
+            <tr>
+                <td>Ticket Text</td>
+            </tr>
             <tr>
                 <td>
                     <Builder:DataLabel ID="txtPrintView" runat="server" DataFieldName="printable_text" ReadOnly="True" Rows="30" TextMode="MultiLine" Width="100%">

@@ -36,6 +36,11 @@ Public Class Login
             App.CurrentUser = usr
             App.CurrentClient = cl
 
+            App.ModuleNames = New Hashtable
+            For Each m As SystemModule In App.CurrentClient.Modules
+                App.ModuleNames.Add("_" & m.ID, m.Name)
+            Next
+
             If usr.ID = 0 Then
                 Me.lblMessage.Text = "We could not find a user matching the credentials you specified.<br/><br/>If you have not registered your account yet please visit http://www.utilitywizards.com/registration to setup your profile."
             Else

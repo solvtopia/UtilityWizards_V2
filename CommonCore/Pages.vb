@@ -255,6 +255,11 @@ tryAgain:
                     End If
                     App.CurrentClient = New SystemClient(App.CurrentUser.ClientID)
 
+                    App.ModuleNames = New Hashtable
+                    For Each m As SystemModule In App.CurrentClient.Modules
+                        App.ModuleNames.Add("_" & m.ID, m.Name)
+                    Next
+
                     If App.CurrentUser.ID > 0 Then
                         GoTo tryAgain
                     Else

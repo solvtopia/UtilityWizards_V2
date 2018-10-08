@@ -245,15 +245,19 @@ Public Class Print
         Dim cn As New SqlClient.SqlConnection(ConnectionString)
 
         Try
-            Dim cmd As New SqlClient.SqlCommand("Select [ID], [xmlData], [xUserEmail] FROM [vwModuleData] WHERE [ID] = " & Me.RecordId, cn)
+            Dim cmd As New SqlClient.SqlCommand("Select [ID], [xmlData], [xUserEmail], [dtInserted], [dtUpdated] FROM [vwModuleData] WHERE [ID] = " & Me.RecordId, cn)
             If cmd.Connection.State = ConnectionState.Closed Then cmd.Connection.Open()
             Dim rs As SqlClient.SqlDataReader = cmd.ExecuteReader
             If rs.Read Then
                 Me.FromXml(rs("xmlData").ToString)
+
+                Me.lblDateCreated.Text = FormatDateTime(CDate(rs("dtInserted")), DateFormat.ShortDate)
+                Me.lblDateUpdated.Text = FormatDateTime(CDate(rs("dtUpdated")), DateFormat.ShortDate)
             End If
             rs.Close()
             cmd.Cancel()
 
+            Me.lblCurrentDate.Text = FormatDateTime(Now.Date, DateFormat.ShortDate)
             'If Me.txtLocationNum.Text = "" Then Me.txtLocationNum.Text = Me.LocationNum
 
         Catch ex As Exception

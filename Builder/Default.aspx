@@ -44,15 +44,44 @@
     <!-- Info boxes -->
     <asp:PlaceHolder runat="server" ID="pnlBadges">
         <div class="row">
+            <asp:PlaceHolder runat="server" ID="pnlWOLookup">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-blue"></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" style="font-weight: bold;">Quick Lookup</span>
+                            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" HorizontalAlign="NotSet" LoadingPanelID="MainAjaxLoadingPanel">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td>Work Order #</td>
+                                        <td>
+                                            <asp:TextBox runat="server" ID="txtWOLookup" Width="50px" /></td>
+                                        <td>
+                                            <asp:Button runat="server" ID="btnWOLookup" Text="Lookup" /></td>
+                                    </tr>
+                                </table>
+                            </telerik:RadAjaxPanel>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            </asp:PlaceHolder>
+            <!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"></span>
+                    <span class="info-box-icon bg-green"></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">
-                            <asp:LinkButton runat="server" ID="lnkOpenWorkOrders">Open Work Orders</asp:LinkButton></span>
+                        <span class="info-box-text" style="font-weight: bold;">
+                            <asp:LinkButton runat="server" ID="lnkCompletedWorkOrders">Completed Work Orders</asp:LinkButton></span>
                         <span class="info-box-number">
-                            <asp:Label runat="server" ID="lblOpenWorkOrders" /></span>
+                            <asp:Label runat="server" ID="lblCompletedWorkOrders" /></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -65,13 +94,13 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"></span>
+                    <span class="info-box-icon bg-red"></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">
-                            <asp:LinkButton runat="server" ID="lnkCompletedWorkOrders">Completed Work Orders</asp:LinkButton></span>
+                        <span class="info-box-text" style="font-weight: bold;">
+                            <asp:LinkButton runat="server" ID="lnkOpenWorkOrders">Open Work Orders</asp:LinkButton></span>
                         <span class="info-box-number">
-                            <asp:Label runat="server" ID="lblCompletedWorkOrders" /></span>
+                            <asp:Label runat="server" ID="lblOpenWorkOrders" /></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>

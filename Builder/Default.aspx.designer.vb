@@ -131,22 +131,40 @@ Partial Public Class _Default4
     Protected WithEvents pnlBadges As Global.System.Web.UI.WebControls.PlaceHolder
     
     '''<summary>
-    '''lnkOpenWorkOrders control.
+    '''pnlWOLookup control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lnkOpenWorkOrders As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents pnlWOLookup As Global.System.Web.UI.WebControls.PlaceHolder
     
     '''<summary>
-    '''lblOpenWorkOrders control.
+    '''RadAjaxPanel1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblOpenWorkOrders As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents RadAjaxPanel1 As Global.Telerik.Web.UI.RadAjaxPanel
+    
+    '''<summary>
+    '''txtWOLookup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtWOLookup As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''btnWOLookup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnWOLookup As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''lnkCompletedWorkOrders control.
@@ -165,6 +183,24 @@ Partial Public Class _Default4
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblCompletedWorkOrders As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lnkOpenWorkOrders control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lnkOpenWorkOrders As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''lblOpenWorkOrders control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblOpenWorkOrders As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''lblHeader control.

@@ -135,6 +135,7 @@
     <Content Include="documentation\api\Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\gallery\clients\13\logo.png" />
     <Content Include="images\gallery\modules\811.png" />
     <Content Include="images\gallery\modules_large\811.png" />
     <Content Include="Register.aspx" />
@@ -1677,7 +1678,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="False" UseAjaxifiedTemplates="False" />
+      <UserProperties UseAjaxifiedTemplates="False" UseJQuerySupport="False" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

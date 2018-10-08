@@ -581,7 +581,7 @@ Public Class _Module
                             msg.To.Add("james@solvtopia.com")
                         Else
                             msg.To.Add(rs("xEmail").ToString)
-                            msg.BCC.Add("james@solvtopia.com")
+                            'msg.BCC.Add("james@solvtopia.com")
                         End If
                         msg.Body = "<html>" & txt & "</html>"
                         msg.Subject = "Utility Wizards Work Order Created"
@@ -620,7 +620,7 @@ Public Class _Module
                                 msg.To.Add("james@solvtopia.com")
                             Else
                                 msg.To.Add(rs("xEmail").ToString)
-                                msg.BCC.Add("james@solvtopia.com")
+                                'msg.BCC.Add("james@solvtopia.com")
                             End If
                             msg.Body = "<html>" & txt & "</html>"
                             msg.Subject = "Utility Wizards Work Order Updated"

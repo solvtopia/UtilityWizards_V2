@@ -166,12 +166,9 @@ Public Module Common
         Dim retVal As String = ""
 
         Try
-            For Each m As SystemModule In App.CurrentClient.Modules
-                If m.ID = modId Then
-                    retVal = m.Name
-                    Exit For
-                End If
-            Next
+            If App.ModuleNames.ContainsKey("_" & modId) Then
+                retVal = App.ModuleNames("_" & modId).ToString
+            End If
 
         Catch ex As Exception
             ex.WriteToErrorLog(New ErrorLogEntry(Enums.ProjectName.CommonCore))
